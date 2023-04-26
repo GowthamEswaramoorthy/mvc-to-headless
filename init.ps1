@@ -89,6 +89,11 @@ Set-EnvFileVariable "SITECORE_ID_CERTIFICATE_PASSWORD" -Value $idCertPassword
 # UNICORN_SHARED_SECRET
 Set-EnvFileVariable "UNICORN_SHARED_SECRET" -Value (Get-SitecoreRandomString 64)
 
+# JSS_EDITING_SECRET
+# Populate it for the Next.js local environment as well
+$jssEditingSecret = Get-SitecoreRandomString 64 -DisallowSpecial
+Set-EnvFileVariable "JSS_EDITING_SECRET" -Value $jssEditingSecret
+
 ##################################
 # Configure TLS/HTTPS certificates
 ##################################
@@ -111,6 +116,9 @@ try {
     Write-Host "Generating Traefik TLS certificate..." -ForegroundColor Green
     & $mkcert -install
     & $mkcert "*.$($HostName).localhost"
+
+    # stash CAROOT path for messaging at the end of the script
+    $caRoot = "$(& $mkcert -CAROOT)\rootCA.pem"
 }
 catch {
     Write-Host "An error occurred while attempting to generate TLS certificate: $_" -ForegroundColor Red
@@ -131,3 +139,12 @@ Add-HostsEntry "id.$($HostName).localhost"
 Add-HostsEntry "www.$($HostName).localhost"
 
 Write-Host "Done!" -ForegroundColor Green
+
+Write-Host
+Write-Host ("#" * 75) -ForegroundColor Cyan
+Write-Host "To avoid HTTPS errors, set the NODE_EXTRA_CA_CERTS environment variable" -ForegroundColor Cyan
+Write-Host "using the following commmand:" -ForegroundColor Cyan
+Write-Host "setx NODE_EXTRA_CA_CERTS $caRoot"
+Write-Host
+Write-Host "You will need to restart your terminal or VS Code for it to take effect." -ForegroundColor Cyan
+Write-Host ("#" * 75) -ForegroundColor Cyan
