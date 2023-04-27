@@ -35,7 +35,7 @@ Languages:
       Value: Fusce non eleifend molestie donec tempor blandit
     - ID: "fc7c99d4-7301-44eb-908c-bf4ffca5a131"
       Hint: Related Products
-      Type: Multilist with Search
+      Type: Treelist
       Value: |
         {413D28C8-5E86-4041-94B7-C15F6F3323CB}
         {7B166F1F-3980-4249-89FF-1982FC5C9D0B}

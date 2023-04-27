@@ -5,6 +5,13 @@ Template: "3a45a723-64ee-4919-9d41-02fd40fd1466"
 Path: /sitecore/layout/Layouts/Project/BasicCompany/Default
 DB: master
 SharedFields:
+- ID: "80334869-86dc-4472-aa89-44cf1b2f6c9b"
+  Hint: Placeholders
+  Type: Treelist
+  Value: |
+    {CB463468-5B88-4A5E-B368-01C00D65865C}
+    {97AAE0E8-B193-4903-B191-325C34796FBF}
+    {E0FF1012-F6DD-416C-B62D-17DEC31BD861}
 - ID: "a036b2bc-ba04-44f6-a75f-bae6cd242abf"
   Hint: Path
   Value: /Views/BasicCompany/Layouts/Default.cshtml

@@ -35,7 +35,7 @@ Languages:
       Value: Placerat malesuada nisl adipiscing diam auctor litora ut
     - ID: "fc7c99d4-7301-44eb-908c-bf4ffca5a131"
       Hint: Related Products
-      Type: Multilist with Search
+      Type: Treelist
       Value: |
         {46B11991-BBFC-4FEE-B6A0-BC210F96C167}
         {63B9578F-0525-4470-BABE-9370D39BA904}

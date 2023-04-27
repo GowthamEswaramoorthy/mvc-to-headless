@@ -35,7 +35,7 @@ Languages:
       Value: Ad tristique etiam curabitur congue in ornare litora
     - ID: "fc7c99d4-7301-44eb-908c-bf4ffca5a131"
       Hint: Related Products
-      Type: Multilist with Search
+      Type: Treelist
       Value: |
         {BEED227F-E27F-4179-BAD4-4FE04CA44A62}
         {0943BC07-9828-45FA-8C4B-C2B49FDE019C}

@@ -35,7 +35,7 @@ Languages:
       Value: Vestibulum aenean quisque aliquam pellentesque rutrum ante eu
     - ID: "fc7c99d4-7301-44eb-908c-bf4ffca5a131"
       Hint: Related Products
-      Type: Multilist with Search
+      Type: Treelist
       Value: |
         {D2FB7162-3A8C-4407-A481-736A7181608A}
         {64C67D17-D9FA-4CC3-958E-CED6A9EF1312}

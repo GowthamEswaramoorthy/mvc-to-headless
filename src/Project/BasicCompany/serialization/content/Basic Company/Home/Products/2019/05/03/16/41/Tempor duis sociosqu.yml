@@ -35,7 +35,7 @@ Languages:
       Value: Phasellus iaculis nisi maecenas euismod ad
     - ID: "fc7c99d4-7301-44eb-908c-bf4ffca5a131"
       Hint: Related Products
-      Type: Multilist with Search
+      Type: Treelist
       Value: |
         {7868BB89-FEB1-4C08-AD4E-1C72FAC5E0B5}
         {641E5449-B775-4549-8CF9-78D876476704}

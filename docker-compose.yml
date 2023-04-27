@@ -66,6 +66,7 @@ services:
     depends_on:
       mssql:
         condition: service_healthy
+
   solr:
     isolation: ${ISOLATION}
     image: ${SITECORE_DOCKER_REGISTRY}nonproduction/solr:8.8.2-${SITECORE_VERSION}

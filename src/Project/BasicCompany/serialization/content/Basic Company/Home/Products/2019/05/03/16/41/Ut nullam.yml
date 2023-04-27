@@ -35,7 +35,7 @@ Languages:
       Value: Class etiam donec tempor nulla in condimentum elementum
     - ID: "fc7c99d4-7301-44eb-908c-bf4ffca5a131"
       Hint: Related Products
-      Type: Multilist with Search
+      Type: Treelist
       Value: |
         {D2FB7162-3A8C-4407-A481-736A7181608A}
         {57EEE913-0CC2-4015-8CCF-79E847AAE53A}

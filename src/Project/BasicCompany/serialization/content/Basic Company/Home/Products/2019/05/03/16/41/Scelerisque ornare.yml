@@ -35,7 +35,7 @@ Languages:
       Value: Potenti duis mollis non tempus habitasse id hendrerit
     - ID: "fc7c99d4-7301-44eb-908c-bf4ffca5a131"
       Hint: Related Products
-      Type: Multilist with Search
+      Type: Treelist
       Value: |
         {C0FC922E-A245-4469-A306-0CC3166BA63C}
         {7B166F1F-3980-4249-89FF-1982FC5C9D0B}

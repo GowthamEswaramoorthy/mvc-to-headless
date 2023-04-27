@@ -35,7 +35,7 @@ Languages:
       Value: Bibendum molestie sed fermentum dictumst in
     - ID: "fc7c99d4-7301-44eb-908c-bf4ffca5a131"
       Hint: Related Products
-      Type: Multilist with Search
+      Type: Treelist
       Value: |
         {641E5449-B775-4549-8CF9-78D876476704}
         {46B11991-BBFC-4FEE-B6A0-BC210F96C167}
