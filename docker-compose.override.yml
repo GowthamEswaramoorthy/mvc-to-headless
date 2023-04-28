@@ -1,6 +1,16 @@
 version: "2.4"
 
 services:
+  nodejs:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
+    build:
+      context: ./docker/build/nodejs
+      args:
+        PARENT_IMAGE: ${NODEJS_PARENT_IMAGE}
+        NODEJS_VERSION: ${NODEJS_VERSION}
+    deploy:
+      replicas: 0
+
   solution:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
     build:
@@ -9,12 +19,38 @@ services:
         BASE_IMAGE: ${SOLUTION_BASE_IMAGE}
         BUILD_IMAGE: ${SOLUTION_BUILD_IMAGE}
         BUILD_CONFIGURATION: ${BUILD_CONFIGURATION}
-    scale: 0
+    deploy:
+      replicas: 0
+
+  rendering:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-rendering:${VERSION:-latest}
+    build:
+      context: ./docker/build/rendering
+      target: ${BUILD_CONFIGURATION}
+      args:
+        PARENT_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
+    # volumes:
+    #   - .\src\Project\BasicCompany\basic-company:C:\app
+    environment:
+      SITECORE_API_HOST: "http://cd"
+      NEXTJS_DIST_DIR: ".next-container"
+      PUBLIC_URL: "https://${RENDERING_HOST}"
+      JSS_EDITING_SECRET: ${JSS_EDITING_SECRET}
+    depends_on:
+      - cm
+      - nodejs
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rendering-secure.entrypoints=websecure"
+      - "traefik.http.routers.rendering-secure.rule=Host(`${RENDERING_HOST}`)"
+      - "traefik.http.routers.rendering-secure.tls=true"
 
   # Mount the Traefik configuration and certs.
   traefik:
     volumes:
       - ./docker/traefik:C:/etc/traefik
+    depends_on:
+      - rendering
 
   redis:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-redis:${VERSION:-latest}
@@ -25,6 +61,7 @@ services:
   mssql:
     volumes:
       - ${LOCAL_DATA_PATH}\mssql:c:\data
+
   mssql-init:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-mssql-init:${VERSION:-latest}
     build:
@@ -72,13 +109,13 @@ services:
       - ${LOCAL_DATA_PATH}\cd:C:\inetpub\wwwroot\App_Data\logs
       - ${HOST_LICENSE_FOLDER}:C:\license
     environment:
-      BASIC_COMPANY_URL: ${CD_HOST}
+      BASIC_COMPANY_URL: ${SITE_HOST}
       RENDERING_HOST_PUBLIC_URI: "https://${RENDERING_HOST}"
       SITECORE_LICENSE_LOCATION: C:\license\license.xml
       SITECORE_DEVELOPMENT_PATCHES: CustomErrorsOff
     entrypoint: powershell -Command "& C:\\tools\\entrypoints\\iis\\Development.ps1"
     labels:
-      - "traefik.http.routers.cd-secure.rule=Host(`${CD_HOST}`) || Host(`${CD_HOST}`)"
+      - "traefik.http.routers.cd-secure.rule=Host(`${SITE_HOST}`) || Host(`${CD_HOST}`)"
 
   cm:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-cm:${VERSION:-latest}
@@ -100,6 +137,9 @@ services:
     environment:
       ITEM_SYNC_LOCATION: c:\items-mounted
       SITECORE_LICENSE_LOCATION: C:\license\license.xml
+      JSS_BasicCompany_DEPLOYMENT_SECRET: ${JSS_BasicCompany_DEPLOYMENT_SECRET}
+      SITECORE_JSS_EDITING_SECRET: ${JSS_EDITING_SECRET}
+      RENDERING_HOST_PUBLIC_URI: "https://${RENDERING_HOST}"
       UNICORN_SHARED_SECRET: ${UNICORN_SHARED_SECRET}
       UNICORN_ENABLE_TRANSPARENT_SYNC: ${UNICORN_ENABLE_TRANSPARENT_SYNC}
       SITECORE_DEVELOPMENT_PATCHES: CustomErrorsOff
