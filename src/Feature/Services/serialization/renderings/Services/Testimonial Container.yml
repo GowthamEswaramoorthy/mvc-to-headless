@@ -11,6 +11,10 @@ SharedFields:
 - ID: "51b435bc-f7b9-478a-9c51-52916af96ff5"
   Hint: Path
   Value: /Views/Services/TestimonialContainer.cshtml
+- ID: "bbb8a1e0-f966-4710-b4f4-42f267598127"
+  Hint: Render as HTML
+  Type: Checkbox
+  Value: 1
 Languages:
 - Language: en
   Versions:

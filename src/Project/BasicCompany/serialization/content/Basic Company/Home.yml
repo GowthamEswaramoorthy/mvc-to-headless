@@ -30,8 +30,7 @@ Languages:
       Type: Layout
       Value: |
         <r xmlns:p="p" xmlns:s="s"
-          p:p="1"
-          s:xsd="http://www.w3.org/2001/XMLSchema">
+          p:p="1">
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
@@ -52,6 +51,14 @@ Languages:
               s:ds="{9C581356-66D4-4993-BB25-757B710A06E8}"
               s:id="{F8CAE35C-3DD6-42CD-A4DA-4223027A6A61}"
               s:ph="main" />
+            <r
+              uid="{CE6F7D1C-167D-4F64-988F-0CBC57E342E3}"
+              p:after="r[@uid='{BB562955-2CF5-4A57-B6C7-DDF2278EC0E0}']"
+              s:ds="{9C581356-66D4-4993-BB25-757B710A06E8}"
+              s:id="{8E93D2B7-00EF-478A-810B-03D98EA2CA25}"
+              s:par=""
+              s:ph="main"
+              s:ccb="Clear on publish" />
             <r
               uid="{E10E7525-8542-41BC-939E-3082925B9C52}"
               p:after="r[@uid='{7D4F689F-208C-4EA3-88BA-0BC6E615771E}']"

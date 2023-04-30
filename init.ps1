@@ -64,6 +64,9 @@ Set-EnvFileVariable "ID_HOST" -Value "id.$($HostName).localhost"
 # SITE_HOST
 Set-EnvFileVariable "SITE_HOST" -Value "www.$($HostName).localhost"
 
+# RENDERING_HOST
+Set-EnvFileVariable "RENDERING_HOST" -Value "rendering.$($HostName).localhost"
+
 # SITECORE_ADMIN_PASSWORD
 Set-EnvFileVariable "SITECORE_ADMIN_PASSWORD" -Value $SitecoreAdminPassword
 
@@ -93,6 +96,7 @@ Set-EnvFileVariable "UNICORN_SHARED_SECRET" -Value (Get-SitecoreRandomString 64)
 # Populate it for the Next.js local environment as well
 $jssEditingSecret = Get-SitecoreRandomString 64 -DisallowSpecial
 Set-EnvFileVariable "JSS_EDITING_SECRET" -Value $jssEditingSecret
+Set-EnvFileVariable "JSS_EDITING_SECRET" -Value $jssEditingSecret -Path .\src\Project\BasicCompany\basic-company\.env
 
 ##################################
 # Configure TLS/HTTPS certificates
@@ -137,6 +141,7 @@ Add-HostsEntry "cd.$($HostName).localhost"
 Add-HostsEntry "cm.$($HostName).localhost"
 Add-HostsEntry "id.$($HostName).localhost"
 Add-HostsEntry "www.$($HostName).localhost"
+Add-HostsEntry "rendering.$($HostName).localhost"
 
 Write-Host "Done!" -ForegroundColor Green
 

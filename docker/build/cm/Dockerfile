@@ -1,12 +1,14 @@
 # escape=`
 
 ARG BASE_IMAGE
+ARG SPE_IMAGE
 ARG TOOLING_IMAGE
 ARG MANAGEMENT_SERVICES_IMAGE
 ARG HEADLESS_SERVICES_IMAGE
 ARG SOLUTION_IMAGE
 
 FROM ${SOLUTION_IMAGE} as solution
+FROM ${SPE_IMAGE} as spe
 FROM ${HEADLESS_SERVICES_IMAGE} AS headless_services
 FROM ${MANAGEMENT_SERVICES_IMAGE} AS management_services
 FROM ${TOOLING_IMAGE} as tooling
@@ -27,6 +29,7 @@ COPY .\unicorn \unicorn\
 
 WORKDIR C:\inetpub\wwwroot
 
+COPY --from=spe C:\module\cm\content C:\inetpub\wwwroot
 # Copy the Sitecore Management Services Module
 COPY --from=management_services C:\module\cm\content C:\inetpub\wwwroot
 

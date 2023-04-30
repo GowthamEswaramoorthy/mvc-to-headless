@@ -8,6 +8,10 @@ SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
   Value: Office/16x16/book.png
+- ID: "bbb8a1e0-f966-4710-b4f4-42f267598127"
+  Hint: Render as HTML
+  Type: Checkbox
+  Value: 1
 - ID: "ded9e431-3604-4921-a4b3-a6ec7636a5b6"
   Hint: Controller Action
   Value: List

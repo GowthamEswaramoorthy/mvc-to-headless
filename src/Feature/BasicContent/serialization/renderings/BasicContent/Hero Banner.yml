@@ -21,6 +21,10 @@ SharedFields:
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
   Value: "./Page Components|query:./ancestor-or-self::*[@@templatename='Site']/Shared Content/Hero Banners"
+- ID: "bbb8a1e0-f966-4710-b4f4-42f267598127"
+  Hint: Render as HTML
+  Type: Checkbox
+  Value: 1
 Languages:
 - Language: en
   Versions:

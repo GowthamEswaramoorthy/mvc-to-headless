@@ -1,6 +1,19 @@
-# Ignore thumbnails created by Windows
+# may contain OAuth secrets, do not commit
+.sitecore/user.json
+
+# NuGet cache for Sitecore CLI
+.sitecore/package-cache/
+
+# Ephemeral index caches used by serialization, do not commit
+.scindex
+
+# Don't commit packages
+*.itempackage
+*.sicpackage
+
+#Ignore thumbnails created by Windows
 Thumbs.db
-# Ignore files built by Visual Studio
+#Ignore files built by Visual Studio
 *.obj
 *.exe
 *.pdb
@@ -27,6 +40,5 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 .vs/
-.vscode/
-# Nuget packages folder
+#Nuget packages folder
 packages/
