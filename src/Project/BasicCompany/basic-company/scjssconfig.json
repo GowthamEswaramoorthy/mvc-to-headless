@@ -1,0 +1,9 @@
+{
+  "sitecore": {
+    "instancePath": "..\\..\\..\\..\\docker\\deploy\\website",
+    "apiKey": "{EE2E30DB-2744-4DE4-9928-E334F89886BA}",
+    "deploySecret": "joxh265cwali5j2qunjrgeorozv8948s66spmgck0d",
+    "deployUrl": "https://www.basic-company-unicorn.localhost/sitecore/api/jss/import",
+    "layoutServiceHost": "https://www.basic-company-unicorn.localhost"
+  }
+}
