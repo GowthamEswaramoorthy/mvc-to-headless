@@ -6,6 +6,8 @@ Ensure you have followed the steps listed on the [installation documentation](ht
 
 The Helix examples assume you have some experience with (or at least an understanding of) Docker container-based Sitecore development. For more information, see the [Sitecore Containers Documentation](https://containers.doc.sitecore.com).
 
+Ensure the machine you are running the below has latest [Node JS](https://nodejs.org/en "Node JS") installed.
+
 ## Initialize
 
 Open a PowerShell administrator prompt and run the following command, replacing the `-LicenseXmlPath` with the location of your Sitecore license file.
