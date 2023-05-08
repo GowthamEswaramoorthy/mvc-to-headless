@@ -6,7 +6,7 @@ export type HeroBannerProps = {
     Image: ImageField;
   };
 };
-const HeroBanner = ({ fields }: HeroBannerProps): JSX.Element => {
+const HeroBanner = ({ fields }: HeroBannerProps) => {
   const bannerStyle = {
     backgroundImage: `url(${fields.Image?.value?.src})`,
   };
@@ -14,7 +14,6 @@ const HeroBanner = ({ fields }: HeroBannerProps): JSX.Element => {
     <section className="hero is-medium is-black" style={bannerStyle}>
       <div className="hero-body">
         <div className="container">
-          <h1>React!</h1>
           <Text field={fields.Title} tag="h1" className="title" />
           <Text field={fields.Subtitle} tag="h2" className="title" />
         </div>
