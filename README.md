@@ -23,16 +23,16 @@ This will perform any necessary preparation steps, such as populating the Docker
 Run the following command in PowerShell.
 
 ```
-docker-compose up -d
+.\up.ps1
 ```
-
-This will download any required Docker images, build the solution and Sitecore runtime images, and then start the containers. The example uses the *Sitecore Experience Management (XM1)* topology.
+The process involves downloading necessary Docker images, installing NextJs and its dependencies along with Sitecore runtime images, and finally launching the containers. In the given scenario, the topology being used is *Sitecore Experience Management (XM1)*.
 
 Once complete, you can access the instance with the following.
 
 * Sitecore Content Management: https://cm.basic-company-unicorn.localhost
 * Sitecore Identity Server: https://id.basic-company-unicorn.localhost
 * Basic Company site: https://www.basic-company-unicorn.localhost
+* Rendering Host: https://rendering.basic-company-unicorn.localhost
 
 ## Publish
 
@@ -42,7 +42,7 @@ Login to Sitecore at https://cm.basic-company-unicorn.localhost/sitecore and per
 
 > For the _Products_ page to work, you'll also need to _Populate Solr Managed Schema_ and rebuild indexes from the Control Panel. You may also need to `docker-compose restart cd` due to workaround an issue with the Solr schema cache on CD.ad
 
-You should now be able to view the Basic Company site at https://www.basic-company-unicorn.localhost.
+You should now be able to view the Basic Company site at https://www.basic-company-unicorn.localhost and Next JS Rendering Host at https://rendering.basic-company-unicorn.localhost
 
 ## Stop Sitecore
 
